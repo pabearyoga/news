@@ -1,0 +1,15 @@
+.header {
+  padding: 10px 20px;
+  background-color: var(--bg);
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /* max-width: var(--mobile); */
+  margin: 0 auto;
+  padding: 22px 0;
+}
