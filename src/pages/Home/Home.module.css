@@ -1,0 +1,27 @@
+.home {
+  width: 302px;
+  margin-top: 60px;
+  margin-right: auto;
+  margin-left: auto;
+  /* background-color: red; */
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 768px) {
+  .home {
+    width: 688px;
+    /* margin-top: 120px; */
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .home {
+    width: 1280px;
+    /* margin-top: 64px; */
+  }
+}
