@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+
+import { Layout } from './components/Layout/Layout';
+
+const Home = lazy(() => import('./pages/Home/Home'));
+const NewsDetails = lazy(() => import('./pages/NewsDetails/NewsDetails'));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="news/:id" element={<NewsDetails />} />
+        {/* 404 Not Found Page with delayed redirect */}
+        {/* <Route path="*" element={
+          <NotFoundPage component={NotFound} redirectTo="/" />
+        } /> */}
+      </Route>
+    </Routes>
   );
 }
 
