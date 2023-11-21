@@ -6,7 +6,9 @@ import Title from '../../components/Title/Title';
 import { getAllNews } from '../../utils/services/newsService.js';
 import css from './Home.module.css';
 import NewsList from '../../components/NewsList/NewsList';
-import {FilterBtn} from '../../components/FilterBtn/FilterBtn'
+import { FilterBtn } from '../../components/FilterBtn/FilterBtn'
+
+import SelectInput from '../../components/SelectInput/SelectInput'
 
 
 const Home = () => {
@@ -30,6 +32,10 @@ const Home = () => {
     }, []); 
 
     console.log(news)
+
+      const categoryList = ['Business', 'Entertainment', 'General', 'Health', 'Science', 'Sport', 'Technology'] 
+      const countryList = ['United Kingdom', 'Ukraine', 'Germany', 'Poland', 'USA'] 
+
         
     return (
         <div className={css.home}>
@@ -43,7 +49,25 @@ const Home = () => {
                 </div>
             </div>
 
-            {showFilter && <div>Filter</div>}
+            {showFilter && <div className={css.inputWrapper}>
+                <SelectInput
+                    // handleSelectClick={handleInputChange}
+                    // selectValue={!category ? category : category.split("")[0].toUpperCase() + category.slice(1)}
+                    // showOption={showCategories}
+                    names={categoryList}
+                    title='Category'
+                    // handleOptionSelect={handleOptionSelect}
+                />
+                <SelectInput
+                    // handleSelectClick={handleInputChange}
+                    // selectValue={!category ? category : category.split("")[0].toUpperCase() + category.slice(1)}
+                    // showOption={showCategories}
+                    names={countryList}
+                    title='Country'
+                    // handleOptionSelect={handleOptionSelect}
+                />
+
+            </div>}
 
             <NewsList newsData={news} />
 
