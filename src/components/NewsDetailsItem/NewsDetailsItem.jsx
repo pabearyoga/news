@@ -18,7 +18,7 @@ const NewsDetailsItem = () => {
     const { title, author, description, publishedAt, urlToImage, source, content  } = news;
 
   return (
-      <div>
+      <div >
         <div className={css.container}>           
             <div className={css.titleWrapper}>
                 <NavLink to="/">
@@ -52,8 +52,6 @@ const NewsDetailsItem = () => {
         </div>
 
           
-
-      {/* Додавайте більше деталей за необхідності */}
     </div>
   );
 };

@@ -1,15 +1,16 @@
 .header {
+  position: fixed;
   padding: 10px 20px;
   background-color: var(--bg);
+  width: 100%;
+  z-index: 10;
 }
 
 .container {
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  /* max-width: var(--mobile); */
   margin: 0 auto;
   padding: 22px 0;
 }

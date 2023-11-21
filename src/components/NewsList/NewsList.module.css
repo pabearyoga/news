@@ -1,0 +1,39 @@
+.newsTable {
+  border-collapse: collapse;
+  background-color: var(--accent);
+  border-radius: 10px;
+}
+
+.newsTableHeader th {
+  padding: 20px;
+  text-align: left;
+
+  color: var(--text);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 20px;
+}
+
+.newsTableBody td {
+  padding: 10px;
+  border: 1px solid var(--accent);
+  background-color: var(--white);
+}
+
+.newsLink {
+  text-align: center;
+}
+
+.titleBtn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.titleBtn:hover {
+  text-decoration: underline;
+}

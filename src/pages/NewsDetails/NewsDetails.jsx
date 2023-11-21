@@ -1,11 +1,9 @@
-import css from './NewsDetails.module.css';
 import NewsDetailsItem from '../../components/NewsDetailsItem/NewsDetailsItem'
 
 const NewsDetails = () => {
     return (
         <div >
-                    <NewsDetailsItem></NewsDetailsItem>
-
+            <NewsDetailsItem></NewsDetailsItem>
         </div>
     )
 };
