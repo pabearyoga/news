@@ -1,0 +1,17 @@
+.btn {
+  color: var(--accent);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 19px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
