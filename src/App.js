@@ -12,10 +12,6 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="news/:id" element={<NewsDetails />} />
-        {/* 404 Not Found Page with delayed redirect */}
-        {/* <Route path="*" element={
-          <NotFoundPage component={NotFound} redirectTo="/" />
-        } /> */}
       </Route>
     </Routes>
   );

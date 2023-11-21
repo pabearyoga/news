@@ -5,6 +5,7 @@ import Search from '../../components/Search/Search';
 import Title from '../../components/Title/Title';
 import { getAllNews } from '../../utils/services/newsService';
 import css from './Home.module.css';
+import NewsList from '../../components/NewsList/NewsList';
 
 
 const Home = () => {
@@ -40,6 +41,8 @@ const Home = () => {
                     handleOptionSelect={handleOptionSelect}
                 ></FilterSelect> */}
             </div>
+
+            <NewsList newsData={news} />
 
         </div>
     )
