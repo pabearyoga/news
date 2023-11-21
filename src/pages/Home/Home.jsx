@@ -6,11 +6,17 @@ import Title from '../../components/Title/Title';
 import { getAllNews } from '../../utils/services/newsService';
 import css from './Home.module.css';
 import NewsList from '../../components/NewsList/NewsList';
+import {FilterBtn} from '../../components/FilterBtn/FilterBtn'
 
 
 const Home = () => {
     const [news, setNews] = useState([]);
+    const [showFilter, setShowFilter] = useState(false)
 
+    const filterSelectClick = () => {
+        setShowFilter(prevShowFilter => !prevShowFilter)
+        // setShowFilter(false)
+    }
 
     useEffect(() => {
         const fetchNews = async () => {
@@ -23,24 +29,20 @@ const Home = () => {
         }
             fetchNews();
     }, []); 
-    
-    console.log(news)
-    
+        
     return (
         <div className={css.home}>
             <div className={css.wrapper}>
                 <Title>News Top Headlines</Title>
-                <Search />
-                {/* <FilterSelect
-                    name='category'
-                    selectValue={category}
-                    handleSelectClick={categorySelectClick}
-                    Icon={CiFilter}
-                    showOption={showCategoryOption}
-                    optionList={categoryList}
-                    handleOptionSelect={handleOptionSelect}
-                ></FilterSelect> */}
+                <div className={css.inputWrapper}>
+                    <Search />
+                    <FilterBtn
+                        handleSelectClick={filterSelectClick}
+                    ></FilterBtn>
+                </div>
             </div>
+            
+            {showFilter && <div>Filter</div>}
 
             <NewsList newsData={news} />
 
