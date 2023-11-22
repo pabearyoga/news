@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { format } from 'date-fns';
-import { BackBnt } from '../../components/BackBnt/BackBnt'
+import  BackBnt  from '../../components/BackBnt/BackBnt'
 import { NavLink } from 'react-router-dom';
 import css from './NewsDetailsItem.module.css';
 

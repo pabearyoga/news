@@ -41,7 +41,7 @@ const getStyles = (name, personName, theme) => {
 
   return (
       <div>
-          <FormControl sx={{  width: 300, mt: 3, mb: 2 }}>
+          <FormControl sx={{  width: 300, mb: 2 }}>
             <p style={{marginBottom: '10px'}}>{title}</p>
             <Select
                 displayEmpty

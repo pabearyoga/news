@@ -6,10 +6,10 @@ const FilterBtn = ({ handleSelectClick }) => {
   return (
     <Button
         variant="contained"
-        style={{ backgroundColor: 'var(--accent)', boxShadow: 'none',height: '56px', padding: '0 30px', color: 'var(--text)',  textTransform: 'capitalize'}}
+        style={{ backgroundColor: 'var(--blue)', boxShadow: 'none',height: '56px', padding: '0 30px', color: 'var(--white)',  textTransform: 'capitalize'}}
         onClick={handleSelectClick}
     >
-      <FilterAltIcon sx={{ fontSize: 24, color: '#888', marginRight: 1 }} />
+      <FilterAltIcon sx={{ fontSize: 24, color: 'var(--white)', marginRight: 1 }} />
       Filters
     </Button>
   );

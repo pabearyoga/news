@@ -1,9 +1,12 @@
-import css from './BackBnt.module.css';
-import { BiArrowBack } from 'react-icons/bi';
+import React from 'react';
+import IconButton from '@mui/material/IconButton';import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-
-export const BackBnt = () => {
-    return (
-        <button className={css.btn}><BiArrowBack size={24} color='var(--accent)' /></button>
-    )
+const BackBtn = () => {
+  return (      
+      <IconButton aria-label="delete" size="large" color="primary">
+        <ArrowBackIcon fontSize="inherit" />
+      </IconButton>
+  );
 };
+
+export default BackBtn;

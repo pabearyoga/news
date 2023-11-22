@@ -40,7 +40,7 @@ const Home = () => {
     return (
         <div className={css.home}>
             <div className={css.wrapper}>
-                <Title>News Top Headlines</Title>
+                <Title><span style={{color: 'var(--blue)'}}>News</span>  Top Headlines</Title>
                 <div className={css.inputWrapper}>
                     <Search />
                     <FilterBtn
@@ -49,7 +49,7 @@ const Home = () => {
                 </div>
             </div>
 
-            {showFilter && <div className={css.inputWrapper}>
+            {showFilter && <div style={{display: 'flex', flexDirection: 'row', gap: '10px'}}>
                 <SelectInput
                     // handleSelectClick={handleInputChange}
                     // selectValue={!category ? category : category.split("")[0].toUpperCase() + category.slice(1)}
