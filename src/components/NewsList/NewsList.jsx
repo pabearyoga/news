@@ -10,7 +10,6 @@ import Paper from '@mui/material/Paper';
 import { useNavigate } from 'react-router-dom';
 import { IoLinkOutline } from 'react-icons/io5';
 import { format } from 'date-fns';
-import css from './NewsList.module.css'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${theme.palette.mode === 'light' ? 'MuiTableCell-head' : 'MuiTableCell-body'}`]: {
