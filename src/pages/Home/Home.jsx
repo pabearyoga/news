@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Search from '../../components/Search/Search';
 import { getAllNews } from '../../utils/services/newsService.js';
-import css from './Home.module.css';
 import NewsList from '../../components/NewsList/NewsList';
 import FilterBtn from '../../components/FilterBtn/FilterBtn';
 import SelectInput from '../../components/SelectInput/SelectInput';
@@ -35,12 +34,12 @@ const Home = () => {
   const countryList = ['United Kingdom', 'Ukraine', 'Germany', 'Poland', 'USA'];
 
   return (
-    <Container className={css.home}>
-      <Box className={css.wrapper}>
+    <Container >
+      <Box style={{display:'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
         <Typography style={{ color: 'var(--text)', fontSize: '32px', fontStyle: 'normal', fontWeight: '600', lineHeight: 'normal' }}>
           <span style={{ color: 'var(--blue)' }}>News</span> Top Headlines
         </Typography>
-        <Box className={css.inputWrapper}>
+        <Box style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
           <Search />
           <FilterBtn handleSelectClick={filterSelectClick} />
         </Box>
