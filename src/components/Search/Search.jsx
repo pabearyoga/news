@@ -1,32 +1,30 @@
 import React from 'react';
-// import { useUser } from '../../hooks/userContext';
-
-import css from './Search.module.css';
-import { FiSearch } from 'react-icons/fi';
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import SearchIcon from '@mui/icons-material/Search';
 
 const Search = () => {
-
-
-    // const { search, changeSearchInput } = useUser();
-
-    return (
-        <div className={css.wrapper}>
-            <div className={css.searchImg}>
-                <FiSearch size={24} color='var(--accent)' />
-            </div>
-
-            <input
-                type="text"
-                className={css.search}
-                name="filter"
-                // value={search}
-                placeholder="Search arcticle"
-                // onChange={changeSearchInput}
-                required
-            />
-        </div>
-    )
-    
+  return (
+    <TextField
+      fullWidth
+      variant="outlined"
+      placeholder="Search article"
+      InputProps={{
+        startAdornment: (
+          <InputAdornment position="start">
+            <SearchIcon />
+          </InputAdornment>
+        ),
+        style: {
+          borderRadius: '8px',
+          border: '1px solid var(--accent)',
+          backgroundColor: 'var(--white)',
+          paddingLeft: '12px',
+          
+        },
+      }}
+    />
+  );
 };
 
 export default Search;

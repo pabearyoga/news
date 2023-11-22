@@ -6,7 +6,7 @@ import Title from '../../components/Title/Title';
 import { getAllNews } from '../../utils/services/newsService.js';
 import css from './Home.module.css';
 import NewsList from '../../components/NewsList/NewsList';
-import { FilterBtn } from '../../components/FilterBtn/FilterBtn'
+import  FilterBtn  from '../../components/FilterBtn/FilterBtn'
 
 import SelectInput from '../../components/SelectInput/SelectInput'
 
