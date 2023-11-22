@@ -1,19 +1,20 @@
-import css from './Header.module.css';
-import Logo from "../Logo/Logo";
-
-import { NavLink } from 'react-router-dom';
-
+import React from 'react';
+import { AppBar, Toolbar, Container } from '@mui/material';
+import { Link } from 'react-router-dom';
+import Logo from '../Logo/Logo';
 
 const Header = () => {
-    return (
-        <div className={css.header}>
-            <div className={css.container}>
-                <NavLink to="/">
-                    <Logo></Logo>
-                </NavLink>
-            </div>
-        </div>
-    )
+  return (
+    <AppBar position="fixed" sx={{ backgroundColor: 'var(--blue)', zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+      <Container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '22px 0' }}>
+        <Link to="/">
+          <Toolbar>
+            <Logo />
+          </Toolbar>
+        </Link>
+      </Container>
+    </AppBar>
+  );
 };
 
 export default Header;

@@ -1,78 +1,61 @@
 import React, { useState, useEffect } from 'react';
-
-// import FilterSelect from '../../components/FilterSelect/FilterSelect';
 import Search from '../../components/Search/Search';
-import Title from '../../components/Title/Title';
 import { getAllNews } from '../../utils/services/newsService.js';
 import css from './Home.module.css';
 import NewsList from '../../components/NewsList/NewsList';
-import  FilterBtn  from '../../components/FilterBtn/FilterBtn'
-
-import SelectInput from '../../components/SelectInput/SelectInput'
-
+import FilterBtn from '../../components/FilterBtn/FilterBtn';
+import SelectInput from '../../components/SelectInput/SelectInput';
+import {
+  Container,
+  Typography,
+  Box,
+} from '@mui/material';
 
 const Home = () => {
-    const [news, setNews] = useState([]);
-    const [showFilter, setShowFilter] = useState(false)
+  const [news, setNews] = useState([]);
+  const [showFilter, setShowFilter] = useState(false);
 
-    const filterSelectClick = () => {
-        setShowFilter(prevShowFilter => !prevShowFilter)
-    }
+  const filterSelectClick = () => {
+    setShowFilter((prevShowFilter) => !prevShowFilter);
+  };
 
-    useEffect(() => {
-        const fetchNews = async () => {
-            try {
-                const newsList = await getAllNews();
-                setNews(newsList.articles);
-            } catch (error) {
-                console.error(error.message);
-            }
-        }
-            fetchNews();
-    }, []); 
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const newsList = await getAllNews();
+        setNews(newsList.articles);
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
+    fetchNews();
+  }, []);
 
-    console.log(news)
+  const categoryList = ['Business', 'Entertainment', 'General', 'Health', 'Science', 'Sport', 'Technology'];
+  const countryList = ['United Kingdom', 'Ukraine', 'Germany', 'Poland', 'USA'];
 
-      const categoryList = ['Business', 'Entertainment', 'General', 'Health', 'Science', 'Sport', 'Technology'] 
-      const countryList = ['United Kingdom', 'Ukraine', 'Germany', 'Poland', 'USA'] 
+  return (
+    <Container className={css.home}>
+      <Box className={css.wrapper}>
+        <Typography style={{ color: 'var(--text)', fontSize: '32px', fontStyle: 'normal', fontWeight: '600', lineHeight: 'normal' }}>
+          <span style={{ color: 'var(--blue)' }}>News</span> Top Headlines
+        </Typography>
+        <Box className={css.inputWrapper}>
+          <Search />
+          <FilterBtn handleSelectClick={filterSelectClick} />
+        </Box>
+      </Box>
 
-        
-    return (
-        <div className={css.home}>
-            <div className={css.wrapper}>
-                <Title><span style={{color: 'var(--blue)'}}>News</span>  Top Headlines</Title>
-                <div className={css.inputWrapper}>
-                    <Search />
-                    <FilterBtn
-                        handleSelectClick={filterSelectClick}
-                    ></FilterBtn>
-                </div>
-            </div>
+      {showFilter && (
+        <Box style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+          <SelectInput names={categoryList} title="Category" />
+          <SelectInput names={countryList} title="Country" />
+        </Box>
+      )}
 
-            {showFilter && <div style={{display: 'flex', flexDirection: 'row', gap: '10px'}}>
-                <SelectInput
-                    // handleSelectClick={handleInputChange}
-                    // selectValue={!category ? category : category.split("")[0].toUpperCase() + category.slice(1)}
-                    // showOption={showCategories}
-                    names={categoryList}
-                    title='Category'
-                    // handleOptionSelect={handleOptionSelect}
-                />
-                <SelectInput
-                    // handleSelectClick={handleInputChange}
-                    // selectValue={!category ? category : category.split("")[0].toUpperCase() + category.slice(1)}
-                    // showOption={showCategories}
-                    names={countryList}
-                    title='Country'
-                    // handleOptionSelect={handleOptionSelect}
-                />
-
-            </div>}
-
-            <NewsList newsData={news} />
-
-        </div>
-    )
+      <NewsList newsData={news} />
+    </Container>
+  );
 };
 
 export default Home;

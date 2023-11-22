@@ -1,58 +1,78 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { format } from 'date-fns';
-import  BackBnt  from '../../components/BackBnt/BackBnt'
+import BackBtn from '../../components/BackBnt/BackBnt';
 import { NavLink } from 'react-router-dom';
-import css from './NewsDetailsItem.module.css';
-
+import {
+  Typography,
+  Grid,
+  Card,
+  CardMedia,
+} from '@mui/material';
 
 const NewsDetailsItem = () => {
-    const location = useLocation();
-    const news = location.state?.news;
-    // Перевірка, чи news
-    if (!news) {
-    return <div>Інформація недоступна</div>;
-    }
+  const location = useLocation();
+  const news = location.state?.news;
 
-    // Вилучення деталей новин з news
-    const { title, author, description, publishedAt, urlToImage, source, content  } = news;
+  // Check if news is available
+  if (!news) {
+    return <div>Information not available</div>;
+  }
+
+  // Extract news details
+  const { title, author, description, publishedAt, urlToImage, source, content } = news;
 
   return (
-      <div >
-        <div className={css.container}>           
-            <div className={css.titleWrapper}>
-                <NavLink to="/">
-                    <BackBnt></BackBnt>
-                </NavLink>
+    <>
+      <Grid container spacing={3}>
+        <Grid item xs={12} style={{display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '50px'}}>
+          <NavLink to="/">
+            <BackBtn />
+          </NavLink>
+          <Typography variant="h4" >
+            {title}
+          </Typography>
+        </Grid>
 
-                <h2 className={css.title}>{title}</h2>             
-            </div>
+        <Grid item xs={12} style={{display:'flex', justifyContent: 'space-between', marginBottom: '20px'}}>
+          <Typography variant="body1" style={{color: 'var(--blue)', fontSize: '16px', fontStyle: 'normal', fontWeight: '600'}}>
+            Source: {source.name || 'N/A'}
+          </Typography>
+          <Typography variant="body1" style={{color: 'var(--blue)', fontSize: '16px', fontStyle: 'normal', fontWeight: '600'}}>
+            Publication date: {format(new Date(publishedAt), 'yyyy-MM-dd') || 'N/A'}
+          </Typography>
+        </Grid>
 
-            <div className={css.infoWrapper}>
-                <p className={css.info}>Source: {source.name || 'N/A'}</p>
-                <p className={css.info}>Publication date: {format(new Date(publishedAt), 'yyyy-MM-dd') || 'N/A'}</p>
-            </div>
+        <Grid item xs={12}>
+                  <Typography variant="h5" style={{ color: 'var(--text)', fontSize: '24px', fontStyle: 'normal', fontWeight: '600', marginBottom:'20px'}}>
+            Description
+          </Typography>
+          <Typography variant="body1" style={{ color: 'var(--text)', fontSize: '18px', fontStyle: 'normal', fontWeight: '400', marginBottom:'20px'}}>
+            {description}
+          </Typography>
+        </Grid>
+      </Grid>
 
-            <div >
-                <h2 className={css.subTitle}>Description</h2>
-                <p className={css.text}>{description}</p>
-            </div>
-        </div>
+      <Card style={{marginBottom: '20px'}}>
+        <CardMedia component="img" alt="news img" height="auto" image={urlToImage}  />
+      </Card>
 
-        <img className={css.img} src={urlToImage} alt="" />
-
-        <div className={css.container}>
-            <div >
-                <h2 className={css.subTitle}>Content</h2>
-                <p className={css.text}>{content}</p>
-            </div>
-            <div className={css.author}>
-                <p className={css.info}>Authors: {author || 'N/A'}</p>
-            </div>
-        </div>
-
-          
-    </div>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Typography variant="h5" style={{ color: 'var(--text)', fontSize: '24px', fontStyle: 'normal', fontWeight: '600', marginBottom:'20px'}}>
+            Content
+          </Typography>
+          <Typography variant="body1" style={{ color: 'var(--text)', fontSize: '18px', fontStyle: 'normal', fontWeight: '400', marginBottom:'20px'}}>
+            {content}
+          </Typography>
+        </Grid>
+        <Grid item xs={12} style={{borderTop: '1px solid var(--accent)', paddingTop: '10px', paddingBottom: '50px'}}>
+          <Typography variant="body1" style={{color: 'var(--blue)', fontSize: '16px', fontStyle: 'normal', fontWeight: '600'}}>
+            Authors: {author || 'N/A'}
+          </Typography>
+        </Grid>
+      </Grid>
+    </>
   );
 };
 

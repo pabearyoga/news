@@ -1,7 +1,7 @@
 import React, { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { Layout } from './components/Layout/Layout';
+import Layout from './components/Layout/Layout';
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const NewsDetails = lazy(() => import('./pages/NewsDetails/NewsDetails'));

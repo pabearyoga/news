@@ -14,15 +14,7 @@ const Search = () => {
           <InputAdornment position="start">
             <SearchIcon />
           </InputAdornment>
-        ),
-        style: {
-          width: '300px',
-          borderRadius: '8px',
-          border: '1px solid var(--accent)',
-          backgroundColor: 'var(--white)',
-          paddingLeft: '12px',
-          color: 'var(--text)'
-        },
+        )
       }}
     />
   );
