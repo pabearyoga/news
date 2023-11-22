@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Search from '../../components/Search/Search';
-import { getAllNews } from '../../utils/services/newsService.js';
+import { getFilterNews } from '../../utils/services/newsService.js';
 import NewsList from '../../components/NewsList/NewsList';
 import FilterBtn from '../../components/FilterBtn/FilterBtn';
 import SelectInput from '../../components/SelectInput/SelectInput';
@@ -9,26 +9,30 @@ import {
   Typography,
   Box,
 } from '@mui/material';
+import { useData } from '../../hooks/userContext.jsx';
+
 
 const Home = () => {
   const [news, setNews] = useState([]);
   const [showFilter, setShowFilter] = useState(false);
 
+  const { search, filterCountry, filterCategory, changeInput } = useData();
+
   const filterSelectClick = () => {
     setShowFilter((prevShowFilter) => !prevShowFilter);
   };
 
-  useEffect(() => {
+useEffect(() => {
     const fetchNews = async () => {
       try {
-        const newsList = await getAllNews();
+        const newsList = await getFilterNews({ search, country: filterCountry, content: filterCategory });
         setNews(newsList.articles);
       } catch (error) {
         console.error(error.message);
       }
     };
     fetchNews();
-  }, []);
+  }, [search, filterCountry, filterCategory]);
 
   const categoryList = ['Business', 'Entertainment', 'General', 'Health', 'Science', 'Sport', 'Technology'];
   const countryList = ['United Kingdom', 'Ukraine', 'Germany', 'Poland', 'USA'];
@@ -47,8 +51,8 @@ const Home = () => {
 
       {showFilter && (
         <Box style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
-          <SelectInput names={categoryList} title="Category" />
-          <SelectInput names={countryList} title="Country" />
+          <SelectInput names={categoryList} title="Category" name='Category' value={filterCategory} handleOptionSelect={changeInput} />
+          <SelectInput names={countryList} title="Country" name='Country' value={filterCountry} handleOptionSelect={changeInput}/>
         </Box>
       )}
 

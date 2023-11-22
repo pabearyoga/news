@@ -25,9 +25,9 @@ const getStyles = (name, personName, theme) => {
   };
 }
 
- const SelectInput = ({names, title}) => {
+ const SelectInput = ({names, title, name, value, handleOptionSelect }) => {
   const theme = useTheme();
-  const [personName, setPersonName] = React.useState([]);
+  const [personName, setPersonName] = React.useState(value || []);
 
   const handleChange = (event) => {
     const {
@@ -37,6 +37,9 @@ const getStyles = (name, personName, theme) => {
       // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value,
     );
+
+    handleOptionSelect(event);
+
   };
 
   return (
@@ -44,7 +47,8 @@ const getStyles = (name, personName, theme) => {
           <FormControl sx={{  width: 300, mb: 2 }}>
             <p style={{marginBottom: '10px'}}>{title}</p>
             <Select
-                displayEmpty
+          displayEmpty
+          name={name}
                 value={personName}
                 onChange={handleChange}
                 input={<OutlinedInput />}

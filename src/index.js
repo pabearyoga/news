@@ -1,19 +1,19 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
-import { BrowserRouter } from "react-router-dom";
-// import { UserProvider } from "./hooks/userContext";
+import { BrowserRouter } from 'react-router-dom';
+import { DataProvider } from './hooks/userContext';
 
-import "./index.css";
-import App from "./App";
+import './index.css';
+import App from './App';
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter basename="/">
-      {/* <UserProvider> */}
-      <App />
-      {/* </UserProvider> */}
+      <DataProvider>
+        <App />
+      </DataProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
