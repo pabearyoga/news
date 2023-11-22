@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -11,21 +11,27 @@ import { IoLinkOutline } from 'react-icons/io5';
 import { format } from 'date-fns';
 import TablePagination from '@mui/material/TablePagination';
 
-const NewsList = ({ newsData }) => {
+const NewsList = ({ newsData, newsTotal }) => {
   const navigate = useNavigate();
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
   const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
+    console.log(event.target.value)
+    setRowsPerPage(event.target.value);
+    // setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
 
+  // console.log(page)
+  // console.log(rowsPerPage)
+
   const paginatedNews = newsData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
+  // console.log(paginatedNews)
 
   const handleMoreInfoClick = (news) => {
     navigate(`/news/${news.publishedAt}`, { state: { news } });
@@ -91,12 +97,13 @@ const NewsList = ({ newsData }) => {
         </Table>
             <TablePagination
               style={{ border: '1px solid var(--accent)' }}
+              rowsPerPageOptions={[5, 10, 25, 50, 100, { label: 'All', value: -1 }]}
               component="div"
-              count={newsData.length}
+              count={newsTotal}
               page={page}
-              onChangePage={handleChangePage}
+              onPageChange={handleChangePage}
               rowsPerPage={rowsPerPage}
-              onChangeRowsPerPage={handleChangeRowsPerPage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
             />
       </TableContainer>
     </div>

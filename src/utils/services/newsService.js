@@ -25,7 +25,7 @@ export const getFilterNews = async ({ search, country, content }) => {
   try {
     const baseUrl = 'https://newsapi.org/v2/top-headlines';
     const apiKey = `apiKey=${token}`;
-    const pageSize = 'pageSize=10';
+    const pageSize = 'pageSize=100';
     const page = 'page=1';
 
     const queryCountryParams = [];
