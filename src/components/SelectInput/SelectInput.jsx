@@ -10,14 +10,11 @@ const ITEM_PADDING_TOP = 8;
 const MenuProps = {
   PaperProps: {
     style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
           width: 250,
-
     },
   },
 };
-
-
 
 const getStyles = (name, personName, theme) => {
   return {
@@ -44,7 +41,7 @@ const getStyles = (name, personName, theme) => {
 
   return (
       <div>
-          <FormControl sx={{ m: 1, width: 300, mt: 3 }}>
+          <FormControl sx={{  width: 300, mt: 3, mb: 2 }}>
             <p style={{marginBottom: '10px'}}>{title}</p>
             <Select
                 displayEmpty
