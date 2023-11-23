@@ -16,6 +16,7 @@ const Search = () => {
       type="search"
       value={search}
       onChange={changeInput}
+       size="small"
 
       InputProps={{
         startAdornment: (
