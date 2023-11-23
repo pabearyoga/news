@@ -39,7 +39,7 @@ const NewsList = ({ newsData, newsTotal }) => {
 
   return (
     <div>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} style={{marginBottom: '50px'}}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
             <TableRow style={{ backgroundColor: 'var(--accent)', border: '1px solid var(--accent)' }}>
