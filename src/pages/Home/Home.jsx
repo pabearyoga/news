@@ -8,7 +8,10 @@ import {
   Container,
   Typography,
   Box,
+  useTheme,
 } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';import OutlinedInput from '@mui/material/OutlinedInput';
+
 import { useData } from '../../hooks/userContext.jsx';
 
 
@@ -18,7 +21,9 @@ const Home = () => {
 
   const { search, filterCountry, filterCategory, changeInput } = useData();
 
-  
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
   const filterSelectClick = () => {
     setShowFilter((prevShowFilter) => !prevShowFilter);
   };
@@ -40,8 +45,8 @@ useEffect(() => {
 
   return (
     <Container >
-      <Box style={{display:'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-        <Typography style={{ color: 'var(--text)', fontSize: '32px', fontStyle: 'normal', fontWeight: '600', lineHeight: 'normal' }}>
+      <Box style={{display:'flex', flexDirection: isSmallScreen ? 'column' : 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+        <Typography style={{ color: 'var(--text)', fontSize: isSmallScreen ? '24px' : '32px', fontStyle: 'normal', fontWeight: '600', lineHeight: 'normal', marginBottom: isSmallScreen ? '10px' : 'none' }}>
           <span style={{ color: 'var(--blue)' }}>News</span> Top Headlines
         </Typography>
         <Box style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
@@ -51,10 +56,14 @@ useEffect(() => {
       </Box>
 
       {showFilter && (
-        <Box style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
-          <SelectInput names={categoryList} title="Category" name='Category' value={filterCategory} handleOptionSelect={changeInput} />
-          <SelectInput names={countryList} title="Country" name='Country' value={filterCountry} handleOptionSelect={changeInput}/>
-        </Box>
+          <Box style={{
+            display: 'flex',
+            flexDirection: isSmallScreen ? 'column' : 'row',
+            gap: '10px'
+          }}>
+            <SelectInput names={categoryList} title="Category" name='Category' value={filterCategory} handleOptionSelect={changeInput} />
+            <SelectInput names={countryList} title="Country" name='Country' value={filterCountry} handleOptionSelect={changeInput}/>
+          </Box>
       )}
 
       <NewsList newsData={news} />

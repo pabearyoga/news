@@ -5,6 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
+
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -26,8 +27,8 @@ const getStyles = (name, personName, theme) => {
 }
 
 const SelectInput = ({ names, title, name, value, handleOptionSelect }) => {
-  const theme = useTheme();
   const [personName, setPersonName] = React.useState(value || []);
+  const theme = useTheme();
 
   const handleChange = (event) => {
     const {
@@ -50,9 +51,12 @@ const SelectInput = ({ names, title, name, value, handleOptionSelect }) => {
     return selectedArray.join(', ');
   };
 
+
   return (
     <div>
-      <FormControl sx={{ width: 300, mb: 2 }}>
+      <FormControl sx={{
+        width: 250, mb: 2
+      }}>
         <p style={{ marginBottom: '10px' }}>{title}</p>
         <Select
           displayEmpty
