@@ -19,6 +19,9 @@ const Home = () => {
 
   const { search, filterCountry, filterCategory, changeInput } = useData();
 
+  console.log(filterCountry)
+  console.log(filterCategory)
+  
   const filterSelectClick = () => {
     setShowFilter((prevShowFilter) => !prevShowFilter);
   };

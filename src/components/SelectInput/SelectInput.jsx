@@ -25,7 +25,7 @@ const getStyles = (name, personName, theme) => {
   };
 }
 
- const SelectInput = ({names, title, name, value, handleOptionSelect }) => {
+const SelectInput = ({ names, title, name, value, handleOptionSelect }) => {
   const theme = useTheme();
   const [personName, setPersonName] = React.useState(value || []);
 
@@ -33,35 +33,38 @@ const getStyles = (name, personName, theme) => {
     const {
       target: { value },
     } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value,
-    );
+
+    const selectedArray = typeof value === 'string' ? value.split(',') : value;
+    setPersonName(selectedArray);
 
     handleOptionSelect(event);
+  };
 
+  const renderValue = (selected) => {
+    const selectedArray = Array.isArray(selected) ? selected : [selected];
+
+    if (selectedArray.length === 0) {
+      return <em>Select</em>;
+    }
+
+    return selectedArray.join(', ');
   };
 
   return (
-      <div>
-          <FormControl sx={{  width: 300, mb: 2 }}>
-            <p style={{marginBottom: '10px'}}>{title}</p>
-            <Select
+    <div>
+      <FormControl sx={{ width: 300, mb: 2 }}>
+        <p style={{ marginBottom: '10px' }}>{title}</p>
+        <Select
           displayEmpty
           name={name}
-                value={personName}
-                onChange={handleChange}
-                input={<OutlinedInput />}
-                renderValue={(selected) => {
-                    if (selected.length === 0) {
-                    return <em>Select</em>;
-                    }
-
-                    return selected.join(', ');
-                }}
-                MenuProps={MenuProps}
-                inputProps={{ 'aria-label': 'Without label' }}
-            >
+          value={personName}
+          onChange={handleChange}
+          input={<OutlinedInput />}
+          size="small"
+          renderValue={() => renderValue(personName)}
+          MenuProps={MenuProps}
+          inputProps={{ 'aria-label': 'Without label' }}
+        >
           <MenuItem disabled value="">
             <em>Select</em>
           </MenuItem>
@@ -78,5 +81,5 @@ const getStyles = (name, personName, theme) => {
       </FormControl>
     </div>
   );
- }
+};
 export default SelectInput

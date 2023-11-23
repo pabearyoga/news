@@ -40,7 +40,7 @@ export const getFilterNews = async ({ search, country, content }) => {
     if (search) {
       queryParams.push(`q=${search}`);
     }
-    if (content) {
+    if (content && content !== 'Selected') {
       queryParams.push(`category=${content}`);
     }
 
@@ -49,10 +49,6 @@ export const getFilterNews = async ({ search, country, content }) => {
 
     const queryString =
       queryParams.length > 0 ? `${queryParams.join('&')}` : '';
-
-    console.log(
-      `${baseUrl}${queryStringCountry}&${apiKey}&${pageSize}&${page}&${queryString}`
-    );
 
     const response = await fetch(
       `${baseUrl}${queryStringCountry}&${apiKey}&${pageSize}&${page}&${queryString}`
