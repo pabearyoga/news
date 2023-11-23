@@ -14,7 +14,6 @@ import { useData } from '../../hooks/userContext.jsx';
 
 const Home = () => {
   const [news, setNews] = useState([]);
-  const [newsTotal, setNewsTotal] = useState([]);
   const [showFilter, setShowFilter] = useState(false);
 
   const { search, filterCountry, filterCategory, changeInput } = useData();
@@ -29,7 +28,6 @@ useEffect(() => {
       try {
         const newsList = await getFilterNews({ search, country: filterCountry, content: filterCategory });
         setNews(newsList.articles);
-        setNewsTotal(newsList.totalResults)
       } catch (error) {
         console.error(error.message);
       }
@@ -59,7 +57,7 @@ useEffect(() => {
         </Box>
       )}
 
-      <NewsList newsData={news} newsTotal={newsTotal} />
+      <NewsList newsData={news} />
     </Container>
   );
 };

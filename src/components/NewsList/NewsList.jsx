@@ -11,7 +11,7 @@ import { IoLinkOutline } from 'react-icons/io5';
 import { format } from 'date-fns';
 import TablePagination from '@mui/material/TablePagination';
 
-const NewsList = ({ newsData, newsTotal }) => {
+const NewsList = ({ newsData }) => {
   const navigate = useNavigate();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -99,7 +99,7 @@ const NewsList = ({ newsData, newsTotal }) => {
               style={{ border: '1px solid var(--accent)' }}
               rowsPerPageOptions={[5, 10, 25, 50, 100, { label: 'All', value: -1 }]}
               component="div"
-              count={newsTotal}
+              count={newsData.length}
               page={page}
               onPageChange={handleChangePage}
               rowsPerPage={rowsPerPage}
