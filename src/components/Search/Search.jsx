@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
-import { useData } from '../../hooks/userContext';
+import { useData } from '../../hooks/filterContext';
 
 const Search = () => {
   const { search, changeInput } = useData();

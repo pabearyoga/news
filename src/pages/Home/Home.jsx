@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-import { useData } from '../../hooks/userContext.jsx';
+import { useData } from '../../hooks/filterContext.jsx';
 
 
 const Home = () => {

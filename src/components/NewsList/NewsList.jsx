@@ -17,22 +17,17 @@ const NewsList = ({ newsData }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const handleChangePage = (event, newPage) => {
+  const handleChangePage = (newPage) => {
     setPage(newPage);
   };
 
   const handleChangeRowsPerPage = (event) => {
     console.log(event.target.value)
     setRowsPerPage(event.target.value);
-    // setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
 
-  // console.log(page)
-  // console.log(rowsPerPage)
-
   const paginatedNews = newsData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
-  // console.log(paginatedNews)
 
   const handleMoreInfoClick = (news) => {
     navigate(`/news/${news.publishedAt}`, { state: { news } });
@@ -71,7 +66,7 @@ const NewsList = ({ newsData }) => {
                       border: 'none',
                       outline: 'none',
                       cursor: 'pointer',
-                      padding: 0, // Remove padding to ensure consistent height
+                      padding: 0, 
                     }}
                     onClick={() => handleMoreInfoClick(news)}
                     onMouseOver={(e) => (e.target.style.textDecoration = 'underline')}
@@ -87,7 +82,7 @@ const NewsList = ({ newsData }) => {
                         display: '-webkit-box',
                         WebkitBoxOrient: 'vertical',
                         whiteSpace: 'pre-wrap',
-                        WebkitLineClamp: 2, // Number of lines to show
+                        WebkitLineClamp: 2, 
                       }}
                     >
                       {news.title}
@@ -100,7 +95,7 @@ const NewsList = ({ newsData }) => {
                       display: '-webkit-box',
                       WebkitBoxOrient: 'vertical',
                       overflow: 'hidden',
-                      WebkitLineClamp: 2, // Number of lines to show
+                      WebkitLineClamp: 2, 
                       textOverflow: 'ellipsis',
                     }}
                   >
@@ -113,7 +108,7 @@ const NewsList = ({ newsData }) => {
                       display: '-webkit-box',
                       WebkitBoxOrient: 'vertical',
                       overflow: 'hidden',
-                      WebkitLineClamp: 2, // Number of lines to show
+                      WebkitLineClamp: 2,
                       textOverflow: 'ellipsis',
                     }}
                   >
@@ -132,16 +127,16 @@ const NewsList = ({ newsData }) => {
             ))}
           </TableBody>
         </Table>
-            <TablePagination
-              style={{ border: '1px solid var(--accent)' }}
-              rowsPerPageOptions={[5, 10, 25, 50, 100, { label: 'All', value: -1 }]}
-              component="div"
-              count={newsData.length}
-              page={page}
-              onPageChange={handleChangePage}
-              rowsPerPage={rowsPerPage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-            />
+        <TablePagination
+          style={{ border: '1px solid var(--accent)' }}
+          rowsPerPageOptions={[5, 10, 25, 50, 100, { label: 'All', value: -1 }]}
+          component="div"
+          count={newsData.length}
+          page={page}
+          onPageChange={handleChangePage}
+          rowsPerPage={rowsPerPage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
       </TableContainer>
     </div>
   );

@@ -14,12 +14,10 @@ const NewsDetailsItem = () => {
   const location = useLocation();
   const news = location.state?.news;
 
-  // Check if news is available
   if (!news) {
     return <div>Information not available</div>;
   }
 
-  // Extract news details
   const { title, author, description, publishedAt, urlToImage, source, content } = news;
 
   return (

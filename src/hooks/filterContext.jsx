@@ -1,8 +1,8 @@
 import { createContext, useContext, useState } from "react";
 
-const DataContext = createContext();
+const FilterContext = createContext();
 
-export const useData = () => useContext(DataContext);
+export const useData = () => useContext(FilterContext);
 
 export const DataProvider = ({ children }) => {
   const [search, setSearch] = useState('');
@@ -45,8 +45,8 @@ export const DataProvider = ({ children }) => {
     }
 
   return (
-    <DataContext.Provider value={{ search, filterCategory, filterCountry, changeInput}}>
+    <FilterContext.Provider value={{ search, filterCategory, filterCountry, changeInput}}>
       {children}
-    </DataContext.Provider>
+    </FilterContext.Provider>
   );
 };
