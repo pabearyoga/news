@@ -1,6 +1,6 @@
 // newsService.js
 
-const token = '9b99915568da4a9883732da3726b51dd';
+const token = 'f3a6a56cecaa43a297ce2e610ebe343a';
 
 export const getAllNews = async () => {
   try {
