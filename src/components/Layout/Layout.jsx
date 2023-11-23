@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, CssBaseline, Box } from '@mui/material';
+import { Container, CssBaseline } from '@mui/material';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import { Outlet } from 'react-router-dom';
@@ -11,11 +11,9 @@ const Layout = () => {
       <CssBaseline />
       <Header />
       <Container component="main" sx={{ marginTop: '150px' }}>
-        <Box component="main" >
-          <Suspense fallback={null}>
+          <Suspense fallback={<div style={{textAlign: 'center'}}>Loading...</div>}>
             <Outlet />
           </Suspense>
-        </Box>
       </Container>
       <Footer />
     </>

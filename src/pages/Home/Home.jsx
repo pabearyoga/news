@@ -10,7 +10,7 @@ import {
   Box,
   useTheme,
 } from '@mui/material';
-import useMediaQuery from '@mui/material/useMediaQuery';import OutlinedInput from '@mui/material/OutlinedInput';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 import { useData } from '../../hooks/userContext.jsx';
 
@@ -28,17 +28,17 @@ const Home = () => {
     setShowFilter((prevShowFilter) => !prevShowFilter);
   };
 
-useEffect(() => {
-    const fetchNews = async () => {
-      try {
-        const newsList = await getFilterNews({ search, country: filterCountry, content: filterCategory });
-        setNews(newsList.articles);
-      } catch (error) {
-        console.error(error.message);
-      }
-    };
-    fetchNews();
-  }, [search, filterCountry, filterCategory]);
+  useEffect(() => {
+      const fetchNews = async () => {
+        try {
+          const newsList = await getFilterNews({ search, country: filterCountry, content: filterCategory });
+          setNews(newsList.articles);
+        } catch (error) {
+          console.error(error.message);
+        }
+      };
+      fetchNews();
+    }, [search, filterCountry, filterCategory]);
 
   const categoryList = ['Business', 'Entertainment', 'General', 'Health', 'Science', 'Sport', 'Technology'];
   const countryList = ['United Kingdom', 'Ukraine', 'Germany', 'Poland', 'USA'];
@@ -56,14 +56,14 @@ useEffect(() => {
       </Box>
 
       {showFilter && (
-          <Box style={{
-            display: 'flex',
-            flexDirection: isSmallScreen ? 'column' : 'row',
-            gap: '10px'
-          }}>
-            <SelectInput names={categoryList} title="Category" name='Category' value={filterCategory} handleOptionSelect={changeInput} />
-            <SelectInput names={countryList} title="Country" name='Country' value={filterCountry} handleOptionSelect={changeInput}/>
-          </Box>
+        <Box style={{
+          display: 'flex',
+          flexDirection: isSmallScreen ? 'column' : 'row',
+          gap: '10px'
+        }}>
+          <SelectInput names={categoryList} title="Category" name='Category' value={filterCategory} handleOptionSelect={changeInput} />
+          <SelectInput names={countryList} title="Country" name='Country' value={filterCountry} handleOptionSelect={changeInput}/>
+        </Box>
       )}
 
       <NewsList newsData={news} />
