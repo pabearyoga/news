@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
 import { useNavigate } from 'react-router-dom';
 import { IoLinkOutline } from 'react-icons/io5';
 import { format } from 'date-fns';
@@ -53,40 +54,76 @@ const NewsList = ({ newsData }) => {
           </TableHead>
           <TableBody> 
             {paginatedNews.map((news, index) => (
-              <TableRow key={index}>
-                <TableCell>
+              <TableRow key={index} >
+                <TableCell style={{padding:'10px'}}>
                   <img
                     src={
                       news.urlToImage ||
                       'https://img.icons8.com/external-others-inmotus-design/67/ED4749/external-N-qwerty-keypad-others-inmotus-design.png'
                     }
                     alt="news img"
-                    width={500}
                   />
                 </TableCell>
-                <TableCell style={{ border: '1px solid var(--accent)' }}>
+                <TableCell style={{ border: '1px solid var(--accent)', width: 200 }}>
                   <button
                     style={{
                       backgroundColor: 'transparent',
                       border: 'none',
                       outline: 'none',
-                      textAlign: 'left',
                       cursor: 'pointer',
-                      textDecoration: 'none'
+                      padding: 0, // Remove padding to ensure consistent height
                     }}
                     onClick={() => handleMoreInfoClick(news)}
                     onMouseOver={(e) => (e.target.style.textDecoration = 'underline')}
                     onMouseOut={(e) => (e.target.style.textDecoration = 'none')}
                   >
-                    {news.title}
+                    <div
+                      style={{
+                        fontSize: '14px',
+                        lineHeight: 1.5,
+                        maxHeight: '40px',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        display: '-webkit-box',
+                        WebkitBoxOrient: 'vertical',
+                        whiteSpace: 'pre-wrap',
+                        WebkitLineClamp: 2, // Number of lines to show
+                      }}
+                    >
+                      {news.title}
+                    </div>
                   </button>
                 </TableCell>
-                <TableCell style={{ border: '1px solid var(--accent)' }}>{news.author || 'N/A'}</TableCell>
-                <TableCell style={{ border: '1px solid var(--accent)' }} width={300}>{news.description || 'N/A'}</TableCell>
-                <TableCell style={{ border: '1px solid var(--accent)', textAlign: 'center' }} width={200}>
-                  {format(new Date(news.publishedAt), 'yyyy-MM-dd')}
+                <TableCell style={{ border: '1px solid var(--accent)' }}>
+                  <Box
+                    style={{
+                      display: '-webkit-box',
+                      WebkitBoxOrient: 'vertical',
+                      overflow: 'hidden',
+                      WebkitLineClamp: 2, // Number of lines to show
+                      textOverflow: 'ellipsis',
+                    }}
+                  >
+                    {news.author || 'N/A'}
+                  </Box>
+                </TableCell>
+                <TableCell style={{ border: '1px solid var(--accent)', width: 300, whiteSpace: 'pre-wrap' }}>
+                  <Box
+                    style={{
+                      display: '-webkit-box',
+                      WebkitBoxOrient: 'vertical',
+                      overflow: 'hidden',
+                      WebkitLineClamp: 2, // Number of lines to show
+                      textOverflow: 'ellipsis',
+                    }}
+                  >
+                    {news.description || 'N/A'}
+                  </Box>
                 </TableCell>
                 <TableCell style={{ border: '1px solid var(--accent)', textAlign: 'center' }} width={150}>
+                  {format(new Date(news.publishedAt), 'yyyy-MM-dd')}
+                </TableCell>
+                <TableCell style={{ border: '1px solid var(--accent)', textAlign: 'center' }} width={120}>
                   <a href={news.url} target="_blank" rel="noreferrer">
                     <IoLinkOutline size={24} color={'var(--text)'} />
                   </a>
