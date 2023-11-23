@@ -49,7 +49,7 @@ const NewsList = ({ newsData }) => {
           <TableBody> 
             {paginatedNews.map((news, index) => (
               <TableRow key={index} >
-                <TableCell style={{padding:'10px', width: '200px'}}>
+                <TableCell style={{ padding: '10px', width: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                   <img
                     src={
                       news.urlToImage ||
