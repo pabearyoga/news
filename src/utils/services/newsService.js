@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 const token = 'f3a6a56cecaa43a297ce2e610ebe343a';
 
 export const getFilterNews = async ({ search, country, content }) => {
