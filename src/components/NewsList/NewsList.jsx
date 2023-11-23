@@ -17,12 +17,11 @@ const NewsList = ({ newsData }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const handleChangePage = (newPage) => {
+  const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
   const handleChangeRowsPerPage = (event) => {
-    console.log(event.target.value)
     setRowsPerPage(event.target.value);
     setPage(0);
   };
@@ -57,11 +56,13 @@ const NewsList = ({ newsData }) => {
                       'https://img.icons8.com/external-others-inmotus-design/67/ED4749/external-N-qwerty-keypad-others-inmotus-design.png'
                     }
                     alt="news img"
+                    width={500}
                   />
                 </TableCell>
                 <TableCell style={{ border: '1px solid var(--accent)', width: 200 }}>
                   <button
                     style={{
+                      textAlign: 'left',
                       backgroundColor: 'transparent',
                       border: 'none',
                       outline: 'none',
